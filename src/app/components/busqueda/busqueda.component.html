@@ -1,0 +1,83 @@
+<div class="wrap-dash">
+  <main class="contenedor-ppal">
+    
+    <div class="migas">
+      <a routerLink="/Inicio">Inicio</a> 
+      <i class="fas fa-chevron-right sep"></i> 
+      <span>Búsqueda</span>
+    </div>
+
+    <div class="panel-buscador mat-elevation-z1">
+      <h1 class="tit-pag">Búsqueda Avanzada</h1>
+      <p class="subtit-pag">Encuentra documentos por DOI, título del proyecto o nombre del autor/es.</p>
+
+      <div class="caja-input-busc">
+        <i class="fas fa-search icono-lupa"></i>
+        <input 
+          type="text" 
+          [formControl]="cajaBusqueda" 
+          placeholder="Ej: Detección de sátira, Luis Balladares, 10.1000/xyz..." 
+          class="input-busc"
+          autofocus>
+        
+        <div class="caja-spinner" *ngIf="buscando">
+          <i class="fas fa-circle-notch fa-spin"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="zona-resultados" *ngIf="busquedaRealizada">
+      <h3 class="info-coincidencias">
+        Se encontraron {{ resultados.length }} documento(s)
+      </h3>
+
+      <div class="tarjeta-tabla mat-elevation-z1 mt-espacio">
+        
+        <table class="tabla-docs" *ngIf="resultados.length > 0">
+          <thead>
+            <tr>
+              <th>Autor / Autores</th>
+              <th>Título del Documento</th>
+              <th class="center">Fecha</th>
+              <th class="center">PDF</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let pub of resultados">
+              <td class="celda-autor">
+              <span *ngFor="let autor of pub.autores; let last = last" class="tag-autor">
+                <i class="fas fa-user-circle"></i> {{ autor }}{{ !last ? ' ; ' : '' }}
+              </span>
+              </td>
+              <td class="celda-tit">
+                <a [routerLink]="['/documento', pub.id]" class="link-doc">{{ pub.titulo }}</a>
+              </td>
+              <td class="celda-fecha center">
+                <span class="badge-fec">{{ pub.fechaPublicacion | date:'dd/MM/yyyy' }}</span>
+              </td>
+              <td class="celda-accion center">
+           <a *ngIf="pub.archivoUrl" [href]="urlApiBase + pub.archivoUrl" target="_blank" class="btn-pdf" title="Abrir Documento Interno">
+             <i class="fas fa-file-pdf"></i>
+           </a>
+
+           <a *ngIf="!pub.archivoUrl && pub.urlExterno" [href]="pub.urlExterno" target="_blank" class="btn-pdf" title="Ir al Repositorio Externo" style="color: #0284c7;">
+             <i class="fas fa-external-link-alt"></i>
+           </a>
+
+           <span *ngIf="!pub.archivoUrl && !pub.urlExterno" class="sin-doc">-</span>
+         </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="caja-vacia" *ngIf="resultados.length === 0 && !buscando">
+          <i class="fas fa-search-minus icono-vacio"></i>
+          <h3>Sin resultados</h3>
+          <p>No encontramos documentos que coincidan con tu búsqueda. Intenta con otros términos.</p>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+</div>

@@ -1,0 +1,120 @@
+<div class="wrap-dash">
+  <main class="contenedor-ppal">
+    
+    <div class="cabecera-titulo flex-separado mat-elevation-z1">
+      <div>
+        <h1 class="tit-pag">Gestión de Repositorio</h1>
+        <p class="subtit-pag">Administra los documentos o registra una nueva publicación.</p>
+      </div>
+      
+      <button *ngIf="vistaActual === 'lista'" class="btn-primario" (click)="cambiarVista('formulario')">
+        <i class="fas fa-upload"></i> Subir Nuevo Documento
+      </button>
+      <button *ngIf="vistaActual === 'formulario'" class="btn-cancelar" (click)="cambiarVista('lista')">
+        <i class="fas fa-arrow-left"></i> Volver a la Lista
+      </button>
+    </div>
+
+    <div class="alerta-exito mt-espacio" *ngIf="mensajeExito">
+      <i class="fas fa-check-circle"></i> {{ mensajeExito }}
+    </div>
+
+    <div class="tarjeta-form mat-elevation-z1 mt-espacio p-cero" *ngIf="vistaActual === 'lista'">
+      
+      <div *ngIf="cargandoLista" class="caja-vacia">
+        <i class="fas fa-circle-notch fa-spin icono-vacio"></i>
+        <p>Cargando documentos...</p>
+      </div>
+
+      <table class="tabla-docs" *ngIf="!cargandoLista && listaDocumentos.length > 0">
+        <thead>
+          <tr>
+            <th>Título del Documento</th>
+            <th>Carrera</th>
+            <th class="center">Fecha Registro</th>
+            <th class="center">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let doc of listaDocumentos">
+            <td class="celda-tit font-medium">{{ doc.titulo }}</td>
+            <td class="celda-texto">{{ doc.carrera }}</td>
+            <td class="celda-fecha center">
+              <span class="badge-fec">{{ doc.fechaPublicacion | date:'dd/MM/yyyy' }}</span>
+            </td>
+            <td class="celda-accion center" style="display: flex; justify-content: center;">
+              <button class="btn-editar" (click)="prepararEdicion(doc.id)" title="Editar metadatos" style="margin-right: 8px;">
+                <i class="fas fa-edit"></i>
+              </button>
+
+              <button class="btn-peligro" (click)="eliminarDoc(doc.id, doc.titulo)" title="Eliminar documento y PDF">
+                <i class="fas fa-trash-alt"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="caja-vacia" *ngIf="!cargandoLista && listaDocumentos.length === 0">
+        <i class="fas fa-folder-open icono-vacio"></i>
+        <h3>No hay documentos</h3>
+        <p>Aún no has registrado publicaciones en el repositorio.</p>
+      </div>
+    </div>
+
+    <div class="tarjeta-form mat-elevation-z1 mt-espacio" *ngIf="vistaActual === 'formulario'">
+      <form [formGroup]="formRegistro" (ngSubmit)="guardarDocumento()" class="form-grid">
+        
+        <div class="grupo-input col-span-2">
+          <label>Título de la Publicación / Proyecto *</label>
+          <input type="text" formControlName="titulo" class="input-ctrl">
+        </div>
+
+        <div class="grupo-input">
+          <label>DOI (Opcional)</label>
+          <input type="text" formControlName="doi" class="input-ctrl">
+        </div>
+
+        <div class="grupo-input col-span-2">
+          <label>Enlace Externo (Opcional si subes PDF)</label>
+          <input type="url" formControlName="urlExterno" class="input-ctrl" placeholder="https://repositorio-externo.com/documento.pdf">
+        </div>
+
+        <div class="grupo-input">
+          <label>Carrera a la que pertenece *</label>
+          <select formControlName="carreraId" class="input-ctrl">
+            <option value="" disabled selected>Selecciona una opción</option>
+            <option *ngFor="let car of listaCarreras" [value]="car.id">{{ car.nombre }}</option>
+          </select>
+        </div>
+
+        <div class="grupo-input col-span-2">
+          <label>Autor / Autores * <span class="nota">(Separados por coma)</span></label>
+          <input type="text" formControlName="autores" class="input-ctrl">
+        </div>
+
+        <div class="grupo-input col-span-2">
+          <label>Resumen (Abstract) *</label>
+          <textarea formControlName="resumen" rows="4" class="input-ctrl textarea-ctrl"></textarea>
+        </div>
+
+        <div class="grupo-input col-span-2 caja-archivo" *ngIf="!modoEdicion">
+          <label>Documento Adjunto (Solo PDF) *</label>
+          <div class="zona-drop">
+            <i class="fas fa-file-pdf icono-pdf"></i>
+            <input type="file" accept="application/pdf" (change)="alSeleccionarArchivo($event)" class="input-file">
+          </div>
+        </div>
+
+        <div class="acciones-form col-span-2">
+          <button type="button" (click)="cambiarVista('lista')" class="btn-cancelar">Cancelar</button>
+          <button type="submit" class="btn-guardar" [disabled]="formRegistro.invalid || (!modoEdicion && !archivoSeleccionado && !formRegistro.get('urlExterno')?.value) || enviando">
+            <span *ngIf="!enviando">{{ modoEdicion ? 'Guardar Cambios' : 'Registrar Documento' }}</span>
+            <span *ngIf="enviando"><i class="fas fa-spinner fa-spin"></i> Procesando...</span>
+          </button>
+        </div>
+      </form>
+    </div>
+
+  </main>
+</div>

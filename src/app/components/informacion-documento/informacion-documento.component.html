@@ -1,116 +1,66 @@
-<header class="mat-elevation-z3">
-    <div class="logo">
-      <a routerLink="/PrincipalComponent" autofocus>
-        <img src="assets/liceo.png" alt="Logo de la Universidad">
-      </a>
-      <div class="instituto-info">
-        <div class="titulorepositorio_1">
-          <p>Biblioteca Digital del Instituto Superior Tecnológico</p>
+<div class="wrap-dash">
+  <main class="contenedor-ppal">
+    <div class="migas">
+      <a style="cursor: pointer" (click)="volverAtras()">Volver atrás</a>
+      <i class="fas fa-chevron-right sep"></i>
+      <span>Detalle del Documento</span>
+    </div>
+    <div *ngIf="cargando" class="caja-vacia">
+      <i class="fas fa-circle-notch fa-spin icono-vacio"></i>
+      <p>Cargando información del documento...</p>
+    </div>
+    <div *ngIf="errorCarga && !cargando" class="caja-vacia">
+      <i class="fas fa-exclamation-triangle icono-vacio" style="color: #ef4444;"></i>
+      <h3>Documento no encontrado</h3>
+      <p>Es posible que el enlace sea incorrecto o el archivo haya sido removido.</p>
+      <button (click)="volverAtras()" class="btn-secundario mt-espacio">Regresar</button>
+    </div>
+    <div class="tarjeta-detalle mat-elevation-z1" *ngIf="!cargando && docInfo">
+      <div class="cabecera-doc">
+        <span class="etiqueta-carrera">{{ docInfo.carrera }}</span>
+        <h1 class="tit-doc">{{ docInfo.titulo }}</h1>
+        <div class="meta-doc">
+          <span class="dato-meta"><i class="fas fa-calendar-alt"></i> {{ docInfo.fechaPublicacion | date:'dd/MM/yyyy' }}</span>
+          <span class="dato-meta" *ngIf="docInfo.doi"><i class="fas fa-barcode"></i> DOI: {{ docInfo.doi }}</span>
         </div>
-        <div class="titulorepositorio_2">
-          <p style="font-size: 1.8em;">LICEO CRISTIANO</p>
+      </div>
+      <div class="cuerpo-doc">
+        <div class="info-principal">
+          <div class="bloque-info">
+            <h3 class="subtit-bloque">Resumen</h3>
+            <p class="txt-resumen">{{ docInfo.resumen }}</p>
+          </div>
+          <div class="bloque-info">
+            <h3 class="subtit-bloque">Autores Registrados</h3>
+            <div class="lista-autores">
+              <div class="etiqueta-autor" *ngFor="let autor of docInfo.autores">
+                <i class="fas fa-user-circle"></i> {{ autor }}
+              </div>
+            </div>
+          </div>
         </div>
+        <aside class="panel-lateral">
+          <div class="caja-descarga">
+            <h3 class="subtit-bloque">Archivo Adjunto</h3>
+            <div *ngIf="docInfo.archivoUrl; else sinArchivo" class="info-archivo">
+              <i class="fas fa-file-pdf icono-archivo"></i>
+              <div class="detalles-archivo">
+                <span class="nom-archivo">{{ docInfo.archivoNombre }}</span>
+                <span class="tam-archivo">{{ docInfo.archivoTamano }}</span>
+              </div>
+              <a [href]="urlApiBase + docInfo.archivoUrl" target="_blank" class="btn-descarga">
+                Visualizar / Descargar <i class="fas fa-external-link-alt"></i>
+              </a>
+            </div>
+            <ng-template #sinArchivo>
+              <div class="archivo-no-disp">
+                <i class="fas fa-file-excel"></i>
+                <span>El autor no proporcionó un documento adjunto.</span>
+              </div>
+            </ng-template>
+          </div>
+        </aside>
       </div>
     </div>
-  </header>
-  
-  <section class="pestanas-section">
-    <div class="pestanas">
-      <a routerLink="/PrincipalComponent">Home</a>
-      <div class="dropdown">
-        <button class="dropbtn">Carreras</button>
-        <div class="dropdown-content">
-          <a routerLink="/subtema1">Tecnología Superior en Administración</a>
-          <a routerLink="/subtema2">Tecnología Superior en Desarrollo de Software</a>
-          <a routerLink="/subtema3">Asistencia Pedagógica</a>
-          <a routerLink="/subtema4">Teología</a>
-        </div>
-      </div>
-      <div class="dropdown">
-        <button class="dropbtn">Bases de datos</button>
-        <div class="dropdown-content">
-          <a href="https://scielo.org/es/">Scielo</a>
-          <a href="https://www.ebsco.com/es">EBSCO</a>
-          <a href="https://dialnet.unirioja.es/">Dialnet</a>
-          <a href="https://www.redalyc.org/">Redalyc</a>
-        </div>
-      </div>
-      <a routerLink="/resultados">Registros</a>
-    </div>
-  </section>
-  
-  <body style="padding-bottom: 8%;">
-    <div class="header-image">
-      <img src="assets/estudiante.jpg" alt="Imagen de encabezado">
-    </div>
-    <main>
-        <h2 class="texto_detalle">Detalles del fichero</h2>
-      <!-- Secciones de texto con líneas divisoras -->
-      <div class="informacion-section">
-        <div class="seccion-titulo">
-          <p>Titulo:</p>
-          <p class="contenido-seccion">Desarrollo e Implementación de un Módulo Virtual para la Biblioteca Institucional del ISTLC</p>
-        </div>
-        <hr class="linea-divisora">
-        
-        <div class="seccion-autor">
-          <p>Autor:</p>
-          <p class="contenido-seccion">Gómez Villamar Ana Estefanía</p>
-        </div>
-        <hr class="linea-divisora">
-        
-        <div class="seccion-fecha">
-          <p>Fecha de<br>publicación:</p>
-          <p class="contenido-seccion">10 de marzo del 2024</p>
-        </div>
-        <hr class="linea-divisora">
-        
-        <div class="seccion-resumen">
-          <p>Resumen:</p>
-          <p class="contenido-seccion">Este proyecto se centra en el diseño e implementación de un módulo de biblioteca virtual que permita que tanto estudiantes como docentes del Instituto Superior Tecnológico Liceo Cristiano de Guayaquil puedan buscar información organizada y actualizada sobre diversas áreas de estudio pertinentes a sus programas académicos y proyectos de investigación. Este módulo proporcionará acceso a recursos digitales como libros electrónicos, artículos científicos, y sobre todo la producción científica de los estudiantes, facilitando así el proceso de aprendizaje y enseñanza dentro de la institución. La metodología de investigación será de tipo cuantitativa, logrando conocer las perspectivas de los estudiantes en función de la necesidad de desarrollar una biblioteca digital. En relación a los resultados obtenidos, se determinó la importancia de realizar la propuesta mencionada, logrando así establecer una base que pueda ser utilizada en lo posterior por la Institución Educativa.</p>
-        </div>
-        <hr class="linea-divisora">
-        
-        <div class="seccion-uri">
-          <p>URL:</p>
-          <p class="contenido-seccion">https://superlative-cajeta-ef3ae3.netlify.app</p>i
-        </div>
-        <hr class="linea-divisora">
-        
-        <div class="seccion-colecciones">
-          <p>Aparece en <br>las <br>colecciones:</p>
-          <p class="contenido-seccion">Repositorio de la carrera de Tecnología Superior en Desarrollo en Software</p>
-        </div>
-      </div>
-  
-      <!-- Cuadro final con ficheros -->
-      <div class="ficheros-section">
-        <p class="ficheros-titulo">Ficheros en este ítem:</p>
-        <table class="ficheros-table">
-          <thead>
-            <tr>
-              <th>Fichero</th>
-              <th>Descripción</th>
-              <th>Tamaño</th>
-              <th>Formato</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="enlace_color"><a href="assets/DesarrolloeImplementaciondeunModuloVirtualparalaBibliotecaInstitucionaldelISTLC.pdf" download>Desarrollo e Implementación de un Módulo Virtual para la Biblioteca Institucional del ISTLC.pdf</a></td>
-              <td>Texto</td>
-              <td>2,09 MB</td>
-              <td>Adobe PDF</td>
-              <td><button class="visualizar-btn" onclick="window.open('assets/DesarrolloeImplementaciondeunModuloVirtualparalaBibliotecaInstitucionaldelISTLC.pdf', '_blank')">Visualizar/abrir</button></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </main>
-    <footer class="footer mat-elevation-z3">
-      <div class="footer-content">
-        <p class="mat-body-1">Copyright<small>©</small> Instituto Superior Tecnológico Liceo Cristiano - 2024</p>
-      </div>
-    </footer>
-  </body>
+  </main>
+</div>

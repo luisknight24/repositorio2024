@@ -1,0 +1,120 @@
+<!-- <div class="repositorio-wrapper">
+  <div class="banner-container">
+    <img src="assets/estudiante.jpg" alt="Estudiantes en biblioteca" class="banner-img">
+    <div class="banner-overlay"></div>
+  </div>
+
+  <main class="content-container">
+    <div class="header-section">
+      <h1 class="page-title">Publicaciones Recientes</h1>
+      <p class="page-subtitle">Explora los documentos y proyectos de esta facultad.</p>
+    </div>
+
+    <div class="table-card mat-elevation-z2">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Autor / Autores</th>
+            <th>Título del Documento</th>
+            <th class="text-center">Fecha de Publicación</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let pub of publicaciones">
+            <td class="author-cell">
+              <span *ngFor="let autor of pub.autores; let last = last" class="author-tag">
+                <i class="fas fa-user-circle"></i> {{ autor }}{{ !last ? ', ' : '' }}
+              </span>
+            </td>
+            <td class="title-cell">
+              <a [routerLink]="['/informaciondocumento', pub.id]" class="doc-link">
+                {{ pub.titulo }}
+              </a>
+            </td>
+            <td class="date-cell text-center">
+              <span class="badge-date">{{ pub.fechaPublicacion | date:'dd/MM/yyyy' }}</span>
+            </td>
+          </tr>
+
+          <tr *ngIf="publicaciones.length === 0" class="empty-row">
+            <td colspan="3">
+              <div class="empty-state">
+                <i class="fas fa-folder-open empty-icon"></i>
+                <h3>Repositorio Vacío</h3>
+                <p>Actualmente no hay documentos registrados para esta carrera.</p>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</div> -->
+
+<div class="wrap-repo">
+  <main class="contenedor-ppal">
+    
+    <div class="migas">
+      <a routerLink="/inicio">Inicio</a> 
+      <i class="fas fa-chevron-right sep"></i> 
+      <span>Repositorio Digital</span>
+    </div>
+
+    <div class="cabecera-titulo">
+      <h1 class="tit-pag">Publicaciones Recientes</h1>
+      <p class="subtit-pag">Consulta los proyectos y la producción científica disponible de esta carrera.</p>
+    </div>
+
+    <div class="tarjeta-tabla mat-elevation-z1">
+      <table class="tabla-docs">
+        <thead>
+          <tr>
+            <th>Autor / Autores</th>
+            <th>Título del Documento</th>
+            <th class="center">Fecha de Publicación</th>
+            <th class="center">PDF</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let pub of publicaciones">
+            <td class="celda-autor">
+              <span *ngFor="let autor of pub.autores; let last = last" class="tag-autor">
+                <i class="fas fa-user-circle"></i> {{ autor }}{{ !last ? ' ; ' : '' }}
+              </span>
+            </td>
+            <td class="celda-tit">
+              <a [routerLink]="['/documento', pub.id]" class="link-doc">
+                {{ pub.titulo }}
+              </a>
+            </td>
+            <td class="celda-fecha center">
+              <span class="badge-fec">{{ pub.fechaPublicacion | date:'dd/MM/yyyy' }}</span>
+            </td>
+            <td class="celda-accion center">
+              <a *ngIf="pub.archivoUrl" [href]="urlApiBase + pub.archivoUrl" target="_blank" class="btn-pdf" title="Abrir Documento Interno">
+                <i class="fas fa-file-pdf"></i>
+              </a>
+
+              <a *ngIf="!pub.archivoUrl && pub.urlExterno" [href]="pub.urlExterno" target="_blank" class="btn-pdf" title="Ir al Repositorio Externo" style="color: #0284c7;">
+                <i class="fas fa-external-link-alt"></i>
+              </a>
+
+              <span *ngIf="!pub.archivoUrl && !pub.urlExterno" class="sin-doc">-</span>
+            </td>
+          </tr>
+
+          <tr *ngIf="publicaciones.length === 0" class="fila-vacia">
+            <td colspan="3">
+              <div class="caja-vacia">
+                <i class="fas fa-folder-open icono-vacio"></i>
+                <h3>Sin archivos registrados</h3>
+                <p>Actualmente no existen documentos publicados en este espacio.</p>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </main>
+</div>

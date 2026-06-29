@@ -1,0 +1,311 @@
+.wrap-dash {
+  background-color: #f8fafc;
+  min-height: calc(100vh - 165px);
+  padding: 40px 20px;
+}
+.contenedor-ppal {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Reutilizamos utilidades de cabecera */
+.migas {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: #64748b;
+  margin-bottom: 16px;
+}
+.migas a {
+  color: #004d80;
+  text-decoration: none;
+  font-weight: 500;
+}
+.migas a:hover {
+  text-decoration: underline;
+}
+.migas .sep {
+  font-size: 0.75rem;
+  color: #cbd5e1;
+}
+.cabecera-titulo {
+  background: #ffffff;
+  padding: 24px 32px;
+  border-radius: 12px 12px 0 0;
+  border: 1px solid #e2e8f0;
+  border-bottom: none;
+}
+.tit-pag {
+  margin: 0;
+  color: #0f172a;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.subtit-pag {
+  margin: 6px 0 0;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+/* Contenedor del Formulario */
+.tarjeta-form {
+  background: #ffffff;
+  border-radius: 0 0 12px 12px;
+  border: 1px solid #e2e8f0;
+  padding: 32px;
+}
+
+.alerta-exito {
+  background-color: #dcfce3;
+  color: #166534;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #bbf7d0;
+}
+
+/* Grid del Formulario */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.col-span-2 {
+  grid-column: span 2;
+}
+
+.grupo-input {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.grupo-input label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #334155;
+}
+.nota {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #94a3b8;
+}
+
+.input-ctrl {
+  padding: 12px 16px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: #1e293b;
+  background-color: #f8fafc;
+  transition: border-color 0.2s;
+  outline: none;
+  font-family: inherit;
+}
+.input-ctrl:focus {
+  border-color: #004d80;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(0, 77, 128, 0.1);
+}
+.textarea-ctrl {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Zona de subida de archivo */
+.caja-archivo {
+  margin-top: 8px;
+}
+.zona-drop {
+  border: 2px dashed #cbd5e1;
+  border-radius: 8px;
+  padding: 30px;
+  text-align: center;
+  background-color: #f8fafc;
+  position: relative;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+.zona-drop:hover {
+  border-color: #004d80;
+  background-color: #f1f5f9;
+}
+.icono-pdf {
+  font-size: 2.5rem;
+  color: #ef4444;
+  margin-bottom: 12px;
+}
+.input-file {
+  width: 100%;
+  cursor: pointer;
+  color: #475569;
+}
+
+/* Botones */
+.acciones-form {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-top: 16px;
+  padding-top: 24px;
+  border-top: 1px solid #e2e8f0;
+}
+.btn-cancelar {
+  padding: 12px 24px;
+  border: 1px solid #cbd5e1;
+  background-color: #ffffff;
+  color: #475569;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.btn-cancelar:hover {
+  background-color: #f1f5f9;
+}
+.btn-guardar {
+  padding: 12px 28px;
+  border: none;
+  background-color: #004d80;
+  color: #ffffff;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, opacity 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.btn-guardar:hover:not(:disabled) {
+  background-color: #003355;
+}
+.btn-guardar:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Utilidades nuevas de layout */
+.flex-separado { 
+  display: flex; 
+  justify-content: 
+  space-between; 
+  align-items: center; 
+  border-radius: 12px; 
+}
+
+.mt-espacio {
+   margin-top: 24px; 
+  }
+
+.p-cero {
+   padding: 0 !important; 
+  }
+
+.font-medium { 
+  font-weight: 600; color: #1e293b; 
+}
+
+.celda-texto {
+   color: #475569; font-size: 0.95rem; 
+  }
+
+/* Tabla reutilizada */
+.tabla-docs { 
+  width: 100%; 
+  border-collapse: collapse; 
+  text-align: left; 
+}
+
+.tabla-docs th { 
+  background-color: #f1f5f9; 
+  color: #475569; 
+  font-weight: 600; 
+  font-size: 0.85rem; 
+  text-transform: uppercase; 
+  padding: 16px 24px; 
+}
+
+.tabla-docs td { 
+  padding: 16px 24px; 
+  border-bottom: 1px solid #f1f5f9; 
+}
+
+.tabla-docs tbody tr:hover { 
+  background-color: #f8fafc; 
+}
+
+.badge-fec { 
+  background-color: #e2e8f0; 
+  color: #475569; 
+  padding: 4px 10px; 
+  border-radius: 20px; 
+  font-size: 0.85rem; 
+  font-weight: 500; }
+
+.center { 
+    text-align: center; 
+}
+
+/* Botones de gestión */
+.btn-primario { 
+  padding: 12px 24px; 
+  border: none; 
+  background-color: #004d80; 
+  color: #ffffff; 
+  border-radius: 8px; 
+  font-weight: 600; 
+  cursor: pointer; 
+  transition: 0.2s; 
+  display: flex; 
+  align-items: center; 
+  gap: 8px; 
+}
+
+.btn-primario:hover { 
+  background-color: #003355; 
+}
+
+.btn-peligro {
+   background-color: #fee2e2; 
+   color: #b91c1c; 
+   border: none; 
+   padding: 8px 12px; 
+   border-radius: 6px; 
+   cursor: pointer; 
+   transition: 0.2s; 
+   font-size: 1.1rem; 
+  }
+
+.btn-peligro:hover { 
+  background-color: #fca5a5; 
+  transform: scale(1.1); 
+}
+
+.caja-vacia { 
+  text-align: center; 
+  padding: 60px 20px; 
+  color: #94a3b8; 
+}
+
+.icono-vacio { 
+  font-size: 2.5rem; 
+  margin-bottom: 12px; 
+}
+
+.btn-editar {
+  background-color: #e0f2fe;
+  color: #0369a1;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+  font-size: 1.1rem;
+}
+.btn-editar:hover {
+  background-color: #bae6fd;
+  transform: scale(1.1);
+}

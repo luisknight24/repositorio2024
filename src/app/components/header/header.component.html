@@ -1,0 +1,46 @@
+<header class="header-ppal mat-elevation-z4">
+  <div class="caja-logo">
+    <a routerLink="/inicio" class="link-logo">
+      <img src="assets/repositorio_.png" alt="Logo Repositorio" class="img-logo">
+      <div class="info-inst">
+        <span class="tit-peq">Repositorio digital</span>
+        <span class="tit-grande">MULTIDISCIPLINARIO</span>
+      </div>
+    </a>
+  </div>
+
+  <nav class="nav-ppal">
+    <a routerLink="/inicio" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Inicio</a>
+    
+    <div class="menu-desplegable">
+      <button class="btn-desplegable">Bases de datos <i class="fas fa-chevron-down text-xs"></i></button>
+      <div class="contenido-desplegable mat-elevation-z3">
+        <a href="https://scielo.org/es/" target="_blank">Scielo</a>
+        <a href="https://www.ebsco.com/es" target="_blank">EBSCO</a>
+        <a href="https://dialnet.unirioja.es/" target="_blank">Dialnet</a>
+        <a href="https://www.redalyc.org/" target="_blank">Redalyc</a>
+      </div>
+    </div>
+
+    <a routerLink="/busqueda" routerLinkActive="active">Búsqueda</a>
+    <a routerLink="/gestion" routerLinkActive="active">Registros</a>
+
+    <a *ngIf="authSvc.estaLogeado()" style="cursor: pointer; color: #ffcc00;" (click)="cerrarSesion()" class="btn-salir">
+      <i class="fas fa-sign-out-alt"></i> Salir
+    </a>
+  </nav>
+</header>
+
+    <section class="banner-principal">
+    <div class="contenedor-imagen">
+      <img src="assets/header-banner.jpg" alt="Banner Biblioteca" class="banner-blur-img">
+      <div class="banner-overlay"></div>
+    </div>
+    
+    <div class="contenido de bienvenida">
+      <h1 class="titulo de bienvenida">Repositorio Académico e Investigativo</h1>
+      <p class="texto de bienvenida">
+        Acceso abierto a documentación científica, proyectos de fin de carrera y recursos académicos.
+      </p>
+    </div>
+  </section>

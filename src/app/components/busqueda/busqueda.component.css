@@ -1,0 +1,223 @@
+/* Utilidades compartidas */
+.wrap-dash {
+	background-color: #f8fafc;
+	min-height: calc(100vh - 165px);
+	padding: 40px 20px;
+}
+
+.contenedor-ppal {
+	max-width: 1100px;
+	margin: 0 auto;
+}
+
+.migas {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-size: 0.85rem;
+	color: #64748b;
+	margin-bottom: 16px;
+}
+
+.migas a {
+	color: #004d80;
+	text-decoration: none;
+	font-weight: 500;
+}
+
+.migas a:hover {
+	text-decoration: underline;
+}
+
+.migas .sep {
+	font-size: 0.75rem;
+	color: #cbd5e1;
+}
+
+.tit-pag {
+	margin: 0;
+	color: #0f172a;
+	font-size: 1.5rem;
+	font-weight: 700;
+}
+
+.subtit-pag {
+	margin: 6px 0 0;
+	color: #64748b;
+	font-size: 0.95rem;
+}
+
+.mt-espacio {
+	margin-top: 16px;
+}
+
+/* Panel de búsqueda */
+.panel-buscador {
+	background: #ffffff;
+	padding: 32px;
+	border-radius: 12px;
+	border: 1px solid #e2e8f0;
+	margin-bottom: 24px;
+}
+
+.caja-input-busc {
+	position: relative;
+	margin-top: 24px;
+	display: flex;
+	align-items: center;
+}
+
+.icono-lupa {
+	position: absolute;
+	left: 16px;
+	color: #94a3b8;
+	font-size: 1.2rem;
+}
+
+.input-busc {
+	width: 100%;
+	padding: 16px 16px 16px 48px;
+	font-size: 1.1rem;
+	color: #1e293b;
+	border: 2px solid #e2e8f0;
+	border-radius: 10px;
+	background-color: #f8fafc;
+	transition: all 0.2s;
+	outline: none;
+	font-family: inherit;
+}
+
+.input-busc:focus {
+	border-color: #004d80;
+	background-color: #ffffff;
+	box-shadow: 0 4px 12px rgba(0, 77, 128, 0.08);
+}
+
+.caja-spinner {
+	position: absolute;
+	right: 16px;
+	color: #004d80;
+	font-size: 1.2rem;
+}
+
+/* Tabla y resultados */
+.zona-resultados {
+	animation: aparecer 0.4s ease;
+}
+
+@keyframes aparecer {
+	from {
+		opacity: 0;
+		transform: translateY(10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.info-coincidencias {
+	color: #334155;
+	font-size: 1.1rem;
+	margin: 0 0 8px 4px;
+}
+
+.tarjeta-tabla {
+	background: #ffffff;
+	border-radius: 12px;
+	border: 1px solid #e2e8f0;
+	overflow: hidden;
+}
+
+.tabla-docs {
+	width: 100%;
+	border-collapse: collapse;
+	text-align: left;
+}
+
+.tabla-docs th {
+	background-color: #f1f5f9;
+	color: #475569;
+	font-weight: 600;
+	font-size: 0.85rem;
+	text-transform: uppercase;
+	padding: 16px 24px;
+	letter-spacing: 0.5px;
+}
+
+.tabla-docs td {
+	padding: 16px 24px;
+	border-bottom: 1px solid #f1f5f9;
+	color: #334155;
+	font-size: 0.95rem;
+}
+
+.tabla-docs tbody tr:hover {
+	background-color: #f8fafc;
+}
+
+.link-doc {
+	color: #004d80;
+	text-decoration: none;
+	font-weight: 600;
+	transition: color 0.2s;
+}
+
+.link-doc:hover {
+	color: #ffcc00;
+	text-decoration: underline;
+}
+
+.tag-autor {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	color: #475569;
+}
+
+.center {
+	text-align: center;
+}
+
+.badge-fec {
+	background-color: #e2e8f0;
+	color: #475569;
+	padding: 4px 10px;
+	border-radius: 20px;
+	font-size: 0.85rem;
+	font-weight: 500;
+}
+
+.btn-pdf {
+	color: #ef4444;
+	font-size: 1.4rem;
+	transition: color 0.2s, transform 0.2s;
+	display: inline-block;
+}
+
+.btn-pdf:hover {
+	color: #b91c1c;
+	transform: scale(1.15);
+}
+
+.sin-doc {
+	color: #cbd5e1;
+	font-weight: bold;
+}
+
+.caja-vacia {
+	text-align: center;
+	padding: 60px 20px;
+	color: #94a3b8;
+}
+
+.icono-vacio {
+	font-size: 2.5rem;
+	color: #cbd5e1;
+	margin-bottom: 12px;
+}
+
+.caja-vacia h3 {
+	color: #475569;
+	margin: 0 0 6px;
+}

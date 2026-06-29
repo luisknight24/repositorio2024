@@ -1,0 +1,86 @@
+<div class="wrap-auth">
+  <div class="caja-auth mat-elevation-z3">
+    
+    <div class="cabecera-auth">
+      <img src="assets/repositorio_.png" alt="Logo" class="logo-auth">
+      <h2>Biblioteca Digital</h2>
+      <p class="subtit-auth">Acceso para investigadores y docentes</p>
+    </div>
+
+    <div class="alerta alerta-error" *ngIf="mensajeError">
+      <i class="fas fa-exclamation-circle"></i> {{ mensajeError }}
+    </div>
+    <div class="alerta alerta-exito" *ngIf="mensajeExito">
+      <i class="fas fa-check-circle"></i> {{ mensajeExito }}
+    </div>
+
+    <form *ngIf="vistaActual === 'login'" [formGroup]="formLogin" (ngSubmit)="ejecutarLogin()" class="form-auth">
+      <div class="grupo-input">
+        <label>Correo Institucional o Personal</label>
+        <input type="email" formControlName="correo" class="input-ctrl" placeholder="usuario@correo.com">
+      </div>
+      
+      <div class="grupo-input">
+        <label>Contraseña</label>
+        <input type="password" formControlName="password" class="input-ctrl" placeholder="••••••••">
+      </div>
+
+      <button type="submit" class="btn-primario" [disabled]="formLogin.invalid || cargando">
+        <span *ngIf="!cargando">Ingresar al Sistema</span>
+        <span *ngIf="cargando"><i class="fas fa-spinner fa-spin"></i> Validando...</span>
+      </button>
+
+      <div class="pie-auth">
+        <span>¿No tienes una cuenta?</span>
+        <a style="cursor:pointer;" (click)="cambiarVista('registro')">Regístrate aquí</a>
+      </div>
+    </form>
+
+    <form *ngIf="vistaActual === 'registro'" [formGroup]="formRegistro" (ngSubmit)="ejecutarRegistro()" class="form-auth">
+      <div class="grupo-input">
+        <label>Nombre Completo</label>
+        <input type="text" formControlName="nombreCompleto" class="input-ctrl" placeholder="Nombre Apellidos">
+      </div>
+
+      <div class="grupo-input">
+        <label>Correo Electrónico</label>
+        <input type="email" formControlName="correo" class="input-ctrl" placeholder="usuario@correo.com">
+      </div>
+      
+      <div class="grupo-input">
+        <label>Contraseña</label>
+        <input type="password" formControlName="password" class="input-ctrl" placeholder="Mínimo 6 caracteres">
+      </div>
+
+      <button type="submit" class="btn-primario" [disabled]="formRegistro.invalid || cargando">
+        <span *ngIf="!cargando">Crear Cuenta</span>
+        <span *ngIf="cargando"><i class="fas fa-spinner fa-spin"></i> Registrando...</span>
+      </button>
+
+      <div class="pie-auth">
+        <span>¿Ya estás registrado?</span>
+        <a style="cursor:pointer;" (click)="cambiarVista('login')">Inicia sesión</a>
+      </div>
+    </form>
+
+    <form *ngIf="vistaActual === 'verificar'" [formGroup]="formVerificar" (ngSubmit)="ejecutarVerificacion()" class="form-auth">
+      <p class="txt-instruccion">Ingresa el código de 6 dígitos que enviamos a tu correo electrónico para activar la cuenta.</p>
+      
+      <div class="grupo-input">
+        <label>Correo Electrónico</label>
+        <input type="email" formControlName="correo" class="input-ctrl" readonly style="background-color: #e2e8f0; color: #64748b;">
+      </div>
+      
+      <div class="grupo-input">
+        <label>Código OTP</label>
+        <input type="text" formControlName="codigo" class="input-ctrl texto-centro" placeholder="123456" maxlength="6">
+      </div>
+
+      <button type="submit" class="btn-primario" [disabled]="formVerificar.invalid || cargando">
+        <span *ngIf="!cargando">Verificar Código</span>
+        <span *ngIf="cargando"><i class="fas fa-spinner fa-spin"></i> Comprobando...</span>
+      </button>
+    </form>
+
+  </div>
+</div>

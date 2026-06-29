@@ -1,5 +1,5 @@
 
-header {
+/* header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -24,10 +24,10 @@ header {
   font-weight: bold;
   font-size: 1.8em;
   margin-top: 10px;
-} 
+}  */
 
  /*Sección de pestañas*/
- .pestanas-section {
+ /* .pestanas-section {
   background-color: #f2f2f2;
   overflow: hidden;
 }
@@ -109,8 +109,8 @@ header {
   .header-image img {
     width: auto;
     height: auto;
-    max-width: 100%; /* Establece el máximo ancho deseado */
-    max-height: 100%; /* Establece el máximo alto deseado */
+    max-width: 100%; 
+    max-height: 100%; 
     margin-top: -9%;
   }
   
@@ -151,7 +151,7 @@ section {
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
     justify-content: center;
-    margin: 0 auto; /* Para centrar la cuadrícula */
+    margin: 0 auto; 
     max-width: 960px;
   }
   
@@ -215,12 +215,12 @@ section {
 }
 
 .detalle div {
-  margin: 0 20px; /* Espacio entre las columnas */
+  margin: 0 20px;
 }
 
 .detalle p {
   margin: 0;
-  margin-right: 10px; /* Espacio entre el texto y el círculo */
+  margin-right: 10px;
 }
 
 .detalle .circulo{
@@ -236,17 +236,15 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 5px; /* Espacio entre el texto y el círculo */
+  margin-left: 5px; 
 }
 
-/* Estilos adicionales para centrar el detalle con respecto a los títulos */
 .opciones-relacionadas td {
   vertical-align: middle;
   margin-bottom: 100px;
 }
 
 .footer {
-  /* text-align: center; */
   padding: 10px;
   position: fixed;
   bottom: 0;
@@ -258,4 +256,301 @@ section {
 
 .footer p{
   text-align: center;
+} */
+
+/* Estilos base del Dashboard */
+/* .dashboard-wrapper {
+  background-color: #f0f4f8;
+  min-height: calc(100vh - 165px);
+  padding-bottom: 60px;
+} */
+
+/* --- EFECTO 1: Banner Principal Difuminado --- */
+/* .main-banner {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: 50px;
+}
+
+.banner-image-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.banner-blur-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(4px) brightness(0.8);
+  transform: scale(1.1); 
+}
+
+.banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 0%, #f0f4f8 100%);
+  opacity: 0.8;
+}
+
+.welcome-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.welcome-title {
+  color: #ffffff; 
+  font-size: 2.8rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin-bottom: 12px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3); 
+}
+
+.welcome-text {
+  color: #e2e8f0; 
+  font-size: 1.15rem;
+  line-height: 1.6;
+  margin: 0;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+} */
+
+/* Estilos de la sección de Carreras (mapeado a nuevas clases HTML) */
+.seccion-carreras {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  margin-bottom: 50px;
+}
+
+.tit-seccion {
+  color: #1e293b;
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 30px;
+  border-left: 5px solid #004d80;
+  padding-left: 15px;
+}
+
+.datos-titulo{
+  color: #1e293b;
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 30px;
+  /* border-left: 5px solid #004d80; */
+  padding-left: 15px;
+  text-align: center;
+}
+
+.grid-carreras {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+/*Tarjetas con Reveal y Zoom*/
+.tarjeta-carrera {
+  position: relative;
+  background-color: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.tarjeta-carrera:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.1);
+  border-color: #cbd5e1;
+}
+
+.img-fondo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  opacity: 0; 
+  transform: scale(1.15);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.tarjeta-carrera:hover .img-fondo {
+  opacity: 0.15;
+  transform: scale(1);
+}
+
+/* Contenedor interno estructurado con flexbox puro */
+.wrap-contenido {
+  position: relative;
+  z-index: 2; 
+  padding: 26px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.cabecera-tarjeta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.icono-avatar {
+  background-color: rgba(0, 77, 128, 0.08);
+  color: #004d80;
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.nom-carrera {
+  margin: 0;
+  color: #0f172a;
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.cuerpo-tarjeta { 
+  flex-grow: 1; 
+}
+
+.desc-carrera {
+  margin: 0;
+  color: #475569;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.acciones-tarjeta {
+  margin-top: auto; /* Empuja el botón siempre hacia el fondo */
+  padding-top: 20px;
+}
+
+.btn-ingresar {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #004d80;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: color 0.2s, gap 0.2s;
+}
+
+.btn-ingresar i {
+  font-size: 0.85rem;
+  transition: transform 0.2s;
+}
+
+.tarjeta-carrera:hover .btn-ingresar {
+  color: #ffcc00;
+  gap: 12px;
+}
+
+.seccion-metricas {
+  max-width: 1200px;
+  margin: -25px auto 40px;
+  padding: 0 20px;
+  position: relative;
+  z-index: 10;
+}
+
+.grid-metricas {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.tarjeta-stat {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  transition: transform 0.2s ease;
+}
+
+.tarjeta-stat:hover {
+  transform: translateY(-2px);
+}
+
+.icono-stat {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.info-stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.num-stat {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.1;
+}
+
+.txt-stat {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #64748b;
+  margin-top: 2px;
+}
+
+.color-azul {
+   background-color: rgba(14, 165, 233, 0.1); 
+   color: #0284c7; 
+  }
+
+.color-verde { 
+  background-color: rgba(34, 197, 94, 0.1); 
+  color: #16a34a; 
+}
+
+.color-naranja { 
+  background-color: rgba(249, 115, 22, 0.1); 
+  color: #ea580c; 
+}
+
+.color-morado { 
+  background-color: rgba(168, 85, 247, 0.1); 
+  color: #9333ea; 
 }

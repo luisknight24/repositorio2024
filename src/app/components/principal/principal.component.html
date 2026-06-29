@@ -1,4 +1,4 @@
-<header class="mat-elevation-z3">
+<!-- <header class="mat-elevation-z3">
   <div class="logo">
     <a routerLink="/PrincipalComponent" autofocus>
       <img src="assets/liceo.png" alt="Logo de la Universidad">
@@ -37,107 +37,84 @@
     </div>
     <a routerLink="/resultados">Registros</a>
   </div>
-</section>
+</section> -->
 <body>
-  <div class="header-image">
-    <img src="assets/estudiante.jpg" alt="Imagen de encabezado">
-  </div>
-  <div class="textosuperior">
-    <p>El Repositorio Institucional del Instituto Tecnológico Superior Liceo Cristiano administra, conserva y comparte de manera abierta los documentos académicos producidos por la institución, tales como tesis, proyectos de fin de carrera, libros, artículos, resultados de investigación y materiales docentes. Este repositorio actúa como un archivo permanente que resguarda la producción científica de sus estudiantes, docentes y colaboradores, con el objetivo de aumentar su visibilidad, accesibilidad e impacto en la comunidad académica y en la sociedad en general.</p>
-  </div>
-  <hr class="mat-divider">
-  <section>
-    <h2 class="mat-h2">Carreras</h2>
-    <hr class="mat-divider">
-    <div class="carreras-container">
-      <mat-card class="carrera">
-        <mat-card-header>
-          <div mat-card-avatar class="logo-avatar">
-            <img src="assets/liceo.png" alt="Logo de la Carrera 1">
-          </div>
-          <mat-card-title>Tecnología Superior en Administración</mat-card-title>
-        </mat-card-header>
-        <mat-card-actions>
-          <a mat-button routerLink="/subtema1">Ingresar al repositorio</a>
-        </mat-card-actions>
-      </mat-card>
-  
-      <mat-card class="carrera">
-        <mat-card-header>
-          <div mat-card-avatar class="logo-avatar">
-            <img src="assets/liceo.png" alt="Logo de la Carrera 2">
-          </div>
-          <mat-card-title>Tecnología Superior en Desarrollo de Software</mat-card-title>
-        </mat-card-header>
-        <mat-card-actions>
-          <a mat-button routerLink="/subtema2">Ingresar al repositorio</a>
-        </mat-card-actions>
-      </mat-card>
-  
-      <mat-card class="carrera">
-        <mat-card-header>
-          <div mat-card-avatar class="logo-avatar">
-            <img src="assets/liceo.png" alt="Logo de la Carrera 3">
-          </div>
-          <mat-card-title>Asistencia Pedagógica</mat-card-title>
-        </mat-card-header>
-        <mat-card-actions>
-          <a mat-button routerLink="/subtema3">Ingresar al repositorio</a>
-        </mat-card-actions>
-      </mat-card>
-  
-      <mat-card class="carrera center">
-        <mat-card-header>
-          <div mat-card-avatar class="logo-avatar">
-            <img src="assets/liceo.png" alt="Logo de la Carrera 4">
-          </div>
-          <mat-card-title>Teología</mat-card-title>
-        </mat-card-header>
-        <mat-card-actions>
-          <a mat-button routerLink="/subtema4">Ingresar al repositorio</a>
-        </mat-card-actions>
-      </mat-card>
+<div class="wrap-dash">
+
+  <h2 class="datos-titulo">Indicadores del repositorio</h2>
+  <section class="seccion-metricas">
+    <div class="grid-metricas">
+      <div class="tarjeta-stat mat-elevation-z1">
+        <div class="icono-stat color-azul">
+          <i class="fas fa-file-alt"></i>
+        </div>
+        <div class="info-stat">
+          <span class="num-stat">{{ datosMetricas.totalDocumentos }}</span>
+          <span class="txt-stat">Documentos digitales e indexados</span>
+        </div>
+      </div>
+
+      <div class="tarjeta-stat mat-elevation-z1">
+        <div class="icono-stat color-verde">
+          <i class="fas fa-users"></i>
+        </div>
+        <div class="info-stat">
+          <span class="num-stat">{{ datosMetricas.totalAutores }}</span>
+          <span class="txt-stat">Autores e Investigadores</span>
+        </div>
+      </div>
+
+      <div class="tarjeta-stat mat-elevation-z1">
+        <div class="icono-stat color-naranja">
+          <i class="fas fa-university"></i>
+        </div>
+        <div class="info-stat">
+          <span class="num-stat">{{ datosMetricas.totalCarreras }}</span>
+          <span class="txt-stat">Facultades activas</span>
+        </div>
+      </div>
+
+      <div class="tarjeta-stat mat-elevation-z1">
+        <div class="icono-stat color-morado">
+          <i class="fas fa-user-shield"></i>
+        </div>
+        <div class="info-stat">
+          <span class="num-stat">{{ datosMetricas.totalUsuarios }}</span>
+          <span class="txt-stat">Cuentas verificadas</span>
+        </div>
+      </div>
+
     </div>
   </section>
-
-  <section class="opciones_relacionadas">
-    <h2 class="mat-h2">Otras opciones relacionadas</h2>
-    <hr class="mat-divider-orange">
-    <table class="opciones-relacionadas">
-      <tr>
-        <td class="opcion">
-          <h3>Autor</h3>
-        </td>
-        <td class="detalle">
-          <a routerLink="/resultados">Gómez Villamar Ana Estefanía</a>
-          <div class="circulo">1</div>
-        </td>
-      </tr>
-      <tr>
-        <td class="opcion">
-          <h3>Título</h3>
-        </td>
-        <td class="detalle">
-          <a routerLink="/resultados">Desarrollo e Implementación de un Módulo Virtual para la Biblioteca Institucional del ISTLC</a>
-          <div class="circulo">1</div>
-        </td>
-      </tr>
-      <tr>
-        <td class="opcion">
-          <h3>Fecha de lanzamiento</h3>
-        </td>
-        <td class="detalle">
-          <a routerLink="/resultados">10 de marzo del 2024</a>
-          <div class="circulo">1</div>
-        </td>
-      </tr>
-    </table>
-  </section>
-
-  <footer class="footer mat-elevation-z3">
-    <div class="footer-content">
-      <p class="mat-body-1">Copyright<small>©</small> Instituto Superior Tecnológico Liceo Cristiano - 2024</p>
+  
+  <section class="seccion-carreras">
+    <h2 class="tit-seccion">Facultades y Carreras</h2>
+    
+    <div class="grid-carreras">
+      <div class="tarjeta-carrera" *ngFor="let carrera of carrerasDisponibles; let i = index">
+        
+        <img [src]="'assets/carrera-card-' + (i + 1) + '.jpg'" alt="Fondo Carrera" class="img-fondo">
+        
+        <div class="wrap-contenido">
+          <div class="cabecera-tarjeta">
+            <div class="icono-avatar">
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+            <h3 class="nom-carrera">{{ carrera.nombre }}</h3>
+          </div>
+          
+          <div class="cuerpo-tarjeta">
+            <p class="desc-carrera">{{ carrera.descripcion }}</p>
+          </div>
+          
+          <div class="acciones-tarjeta">
+            <a [routerLink]="['/carrera', carrera.id]" class="btn-ingresar">
+              Ingresar al repositorio <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
-  </footer>
+  </section>
+</div>
 </body>
-

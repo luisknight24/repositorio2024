@@ -1,0 +1,176 @@
+.header-ppal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  /* background-color: #004d80;  */
+  background-color: #0f172a;
+  height: 100px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.caja-logo .link-logo,
+.link-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+.img-logo {
+  height: 80px;
+  margin-right: 15px;
+}
+
+.info-inst {
+  display: flex;
+  flex-direction: column;
+}
+
+.tit-peq {
+  font-size: 1.2rem;
+  font-family: 'Bebas Neue Pro', sans-serif;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  color: #ffcc00; 
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.tit-grande {
+  font-size: 1.6rem;
+  font-weight: 900;
+  font-family: 'Bebas Neue Pro', sans-serif;
+  color: #ffcc00;   line-height: 1;
+  margin-top: 0px;
+}
+
+/* Navegación */
+.nav-ppal {
+  display: flex;
+  height: 100%;
+}
+.nav-ppal a, .btn-desplegable {
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  height: 100%;
+}
+.nav-ppal a:hover, .menu-desplegable:hover .btn-desplegable, .active {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-bottom: 3px solid #ffcc00;
+}
+.menu-desplegable {
+  position: relative;
+  height: 100%;
+}
+
+.btn-desplegable i {
+  margin-left: 8px;
+  font-size: 0.8rem;
+}
+
+.contenido-desplegable {
+  display: none;
+  position: absolute;
+  top: 85px;
+  left: 0;
+  background-color: #ffffff;
+  min-width: 220px;
+  border-radius: 0 0 8px 8px;
+  overflow: hidden;
+}
+
+.menu-desplegable:hover .contenido-desplegable {
+  display: block;
+}
+
+.contenido-desplegable a {
+  color: #334155;
+  padding: 14px 24px;
+  height: auto;
+  border-bottom: none;
+}
+
+.contenido-desplegable a:hover {
+  background-color: #f1f5f9;
+  color: #004d80;
+  border-bottom: none;
+}
+
+/*Banner Principal Difuminado*/
+.banner-principal {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: 50px;
+}
+.contenedor-imagen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.banner-blur-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(4px) brightness(0.8);
+  transform: scale(1.1);
+}
+
+.banner-overlay {
+  position: absolute;
+  inset: 0;
+  /* Degradado sutil para integrar el banner con el fondo */
+  background: radial-gradient(circle at center, transparent 0%, #f0f4f8 100%);
+  opacity: 0.8;
+}
+
+.contenido.de.bienvenida {
+  position: relative;
+  z-index: 2; /* Por encima de la imagen difuminada */
+  max-width: 800px;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.titulo.de.bienvenida {
+  color: #ffffff; /* Texto blanco para contraste */
+  font-size: 2.8rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin-bottom: 12px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3); /* Sombra para legibilidad */
+}
+
+.texto.de.bienvenida {
+  color: #e2e8f0;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  margin: 0;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+.btn-salir {
+  margin-left: 10px;
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+.btn-salir i {
+  margin-right: 6px;
+}
