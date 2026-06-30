@@ -17,7 +17,7 @@ import { SeguridadGuard } from './guards/seguridad.guard';
 import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
-  {path:'', redirectTo: 'PrincipalComponent', pathMatch: 'full'},
+  {path:'', redirectTo: 'inicio', pathMatch: 'full'},
   { path: 'inicio', component: PrincipalComponent },
   // { path: 'subtema1', component: Subtema1Component },
   // { path: 'subtema2', component: Subtema2Component },
