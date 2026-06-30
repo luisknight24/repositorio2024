@@ -6,7 +6,7 @@ import { Observable, tap } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'https://repositorio-api-luis-egehd7dtc0aydmbp.eastus-01.azurewebsites.net/api';
+  private apiUrl = 'https://repositorio-api-luis-egehd7dtc0aydmbp.eastus-01.azurewebsites.net/api/auth';
   private tokenKey = 'jwt_repo_istlc';
 
   constructor(private http: HttpClient) { }
