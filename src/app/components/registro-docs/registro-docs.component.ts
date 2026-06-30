@@ -82,11 +82,11 @@ export class RegistroDocsComponent implements OnInit {
   guardarDocumento(): void {
     if (this.formRegistro.invalid) return;
 
-    const link = this.formRegistro.get('urlExterno')?.value;
+    const valorUrl = this.formRegistro.get('urlExterno')?.value || '';
+    const link = valorUrl.trim();
 
-    // Si es nuevo, obligamos a que tenga un archivo adjunto
-    if (!this.modoEdicion && !this.archivoSeleccionado && !link) {
-      alert('Debes adjuntar un archivo PDF o ingresar un enlace externo.');
+    if (!this.modoEdicion && !this.archivoSeleccionado && link === '') {
+      alert('Debes adjuntar un archivo PDF o ingresar un enlace externo válido.');
       return;
     }
 
