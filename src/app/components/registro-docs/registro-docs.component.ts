@@ -23,7 +23,7 @@ export class RegistroDocsComponent implements OnInit {
   modoEdicion = false;
   idEdicion: number | null = null;
 
-  constructor(private fb: FormBuilder, private repoSvc: RepositorioService) {}
+  constructor(private fb: FormBuilder, private repoSvc: RepositorioService) { }
 
   ngOnInit(): void {
     this.cargarListaGestion();
@@ -67,7 +67,7 @@ export class RegistroDocsComponent implements OnInit {
           resumen: doc.resumen,
           doi: doc.doi,
           // MODIFICADO: Unimos los autores con punto y coma y un espacio
-          autores: doc.autores.join('; '), 
+          autores: doc.autores.join('; '),
           carreraId: this.listaCarreras.find(c => c.nombre === doc.carrera)?.id || ''
         });
       },
@@ -95,7 +95,7 @@ export class RegistroDocsComponent implements OnInit {
     if (this.modoEdicion && this.idEdicion) {
       //Para editar mandamos un JSON con los textos modificados
       const datosActualizados = this.formRegistro.value;
-      
+
       this.repoSvc.editarDocumento(this.idEdicion, datosActualizados).subscribe({
         next: () => {
           this.enviando = false;
@@ -108,7 +108,7 @@ export class RegistroDocsComponent implements OnInit {
         }
       });
     } else {
-      
+
       const fd = new FormData();
       fd.append('Titulo', this.formRegistro.get('titulo')?.value);
       fd.append('Resumen', this.formRegistro.get('resumen')?.value);
@@ -119,6 +119,10 @@ export class RegistroDocsComponent implements OnInit {
       // fd.append('UrlExterno', link || '');
 
       // Adjuntamos el enlace (si está vacío, enviará un texto vacío)
+      if (this.archivoSeleccionado) {
+        fd.append('Archivo', this.archivoSeleccionado);
+      }
+
       fd.append('UrlExterno', link || '');
 
       this.repoSvc.registrarDocumento(fd).subscribe({
@@ -163,7 +167,7 @@ export class RegistroDocsComponent implements OnInit {
     } else {
       this.archivoSeleccionado = null;
       alert('Selecciona un archivo PDF.');
-      event.target.value = ''; 
+      event.target.value = '';
     }
   }
 
@@ -185,7 +189,7 @@ export class RegistroDocsComponent implements OnInit {
   //       this.mensajeExito = 'Documento registrado y subido correctamente.';
   //       this.formRegistro.reset();
   //       this.archivoSeleccionado = null;
-        
+
   //       setTimeout(() => this.cambiarVista('lista'), 2000);
   //     },
   //     error: () => {
