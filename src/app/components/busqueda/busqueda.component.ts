@@ -14,7 +14,7 @@ export class BusquedaComponent implements OnInit {
   buscando = false;
   busquedaRealizada = false;
   
-  urlApiBase = 'https://localhost:7073/'; 
+  urlApiBase = 'https://repositorio-api-luis-egehd7dtc0aydmbp.eastus-01.azurewebsites.net/'; 
 
   constructor(private repoSvc: RepositorioService) {}
 
