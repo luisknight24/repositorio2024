@@ -119,9 +119,9 @@ export class RegistroDocsComponent implements OnInit {
       // fd.append('UrlExterno', link || '');
 
       // Adjuntamos el enlace (si está vacío, enviará un texto vacío)
-      if (this.archivoSeleccionado) {
-        fd.append('Archivo', this.archivoSeleccionado);
-      }
+      // if (this.archivoSeleccionado) {
+      //   fd.append('Archivo', this.archivoSeleccionado);
+      // }
 
       fd.append('UrlExterno', link || '');
 
