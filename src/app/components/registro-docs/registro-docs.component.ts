@@ -119,12 +119,17 @@ export class RegistroDocsComponent implements OnInit {
       // fd.append('UrlExterno', link || '');
 
       // Adjuntamos el enlace (si está vacío, enviará un texto vacío)
-      // if (this.archivoSeleccionado) {
-      //   fd.append('Archivo', this.archivoSeleccionado);
-      // }
+      if (this.archivoSeleccionado) {
+        fd.append('Archivo', this.archivoSeleccionado, this.archivoSeleccionado.name);
+      }
 
       fd.append('UrlExterno', link || '');
 
+      console.log('--- Datos a enviar ---');
+      fd.forEach((value, key) => {
+        console.log(key, value);
+      });
+      
       this.repoSvc.registrarDocumento(fd).subscribe({
         next: () => {
           this.enviando = false;
