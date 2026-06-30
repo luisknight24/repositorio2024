@@ -27,16 +27,16 @@ export interface Publicacion {
   providedIn: 'root'
 })
 export class RepositorioService {
-  
-  private apiUrl = 'https://localhost:7073/api';
-  
+
+  private apiUrl = 'https://repositorio-api-luis-egehd7dtc0aydmbp.eastus-01.azurewebsites.net/api';
+
   constructor(private http: HttpClient) { }
 
   obtenerCarreras(): Observable<Carrera[]> {
     return this.http.get<Carrera[]>(`${this.apiUrl}/carreras`).pipe(
       catchError(err => {
         console.error('Fallo de conexión al cargar carreras:', err);
-        return of([]); 
+        return of([]);
       })
     );
   }
